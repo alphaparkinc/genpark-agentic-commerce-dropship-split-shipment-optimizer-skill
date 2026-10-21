@@ -1,0 +1,68 @@
+{
+  "name": "genpark-agentic-commerce-dropship-split-shipment-optimizer-skill",
+  "version": "1.0.0",
+  "title": "Dropship Multi-Origin Fulfillment & Split-Shipment Cost Minimizer Skill",
+  "description": "Multi-origin fulfillment routing, box consolidation penalty vs split shipping cost minimization, and transit time SLA compliance. Built for GenPark (https://www.genpark.ai).",
+  "homepage": "https://www.genpark.ai",
+  "linkedin": "https://www.linkedin.com/company/92955550",
+  "category": "agentic-commerce",
+  "topics": [
+    "dropship",
+    "split-shipment",
+    "fulfillment-routing",
+    "order-consolidation",
+    "agentic-commerce",
+    "model-context-protocol",
+    "genpark"
+  ],
+  "tools": [
+    {
+      "name": "optimize_order_routing_matrix",
+      "description": "Select cheapest fulfillment combination across multiple origin warehouses taking inventory availability into account.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "sku_quantities": {
+            "type": "object"
+          },
+          "warehouse_availability": {
+            "type": "object"
+          },
+          "shipping_rates_by_origin": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "sku_quantities",
+          "warehouse_availability",
+          "shipping_rates_by_origin"
+        ]
+      }
+    },
+    {
+      "name": "calculate_split_shipment_economic_penalty",
+      "description": "Calculate net operational penalty of splitting cart across multiple packages vs backorder delay.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "single_box_rate_usd": {
+            "type": "number"
+          },
+          "multi_box_rates_usd": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "extra_packaging_cost_usd": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "single_box_rate_usd",
+          "multi_box_rates_usd"
+        ]
+      }
+    }
+  ]
+}
